@@ -1,0 +1,33 @@
+<!-- app/views/posts/show.html.erb -->
+<h1><%= @post.title %></h1>
+<p><%= @post.body %></p>
+
+<!-- Botón para regresar a la lista de posts -->
+<%= link_to 'Back to Posts', posts_path %>
+
+<!-- Botones para editar y eliminar el post actual -->
+<div>
+  <%= link_to 'Edit', edit_post_path(@post) %> |
+  <%= link_to 'Delete', @post, method: :delete, data: { "turbo-method": :delete } %>
+</div>
+
+<h2>Comments</h2>
+<% @post.comments.each do |comment| %>
+  <p><strong><%= comment.commenter %>:</strong> <%= comment.body %></p>
+<% end %>
+
+<!-- Formulario para crear un nuevo comentario -->
+<h3>Add a comment</h3>
+<%= form_for([@post, Comment.new]) do |f| %>
+  <div class="field">
+    <%= f.label :commenter %><br>
+    <%= f.text_field :commenter %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br>
+    <%= f.text_area :body %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Add Comment' %>
+  </div>
+<% end %>

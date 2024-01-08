@@ -1,0 +1,9 @@
+<!-- app/views/posts/index.html.erb -->
+<h1>Posts</h1>
+
+<!-- Botón para crear un nuevo post -->
+<%= link_to 'New Post', new_post_path %>
+<% @posts.each do |post| %>
+  <h2><%= link_to post.title, post %></h2>
+  <p><%= post.body %></p>
+<% end %>

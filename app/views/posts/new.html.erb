@@ -1,0 +1,17 @@
+<h1>New Post</h1>
+<%= form_with(model: @post, local: true) do |form| %>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<!-- Botón para regresar a la lista de posts -->
+<%= link_to 'Back to Posts', posts_path %>
